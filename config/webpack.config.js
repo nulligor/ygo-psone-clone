@@ -21,7 +21,7 @@ module.exports = {
         //  (ripfoghorn) 
         //  https://github.com/facebookincubator/create-react-app/tree/master/packages/react-error-overlay
         require.resolve("react-error-overlay"),
-        path.join(paths.src, "index.js")
+        path.join(paths.src, "app.js")
     ],
     output: {
         path: paths.build,

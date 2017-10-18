@@ -8,8 +8,6 @@
   "author": "Igor Soares",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.16.2",
-    "cors": "^2.8.4",
     "immutable": "3.8.1",
     "express": "4.14.1",
     "react": "^15.6.1",
