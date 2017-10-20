@@ -10,7 +10,6 @@ class App extends Component {
   }
 ReactDOM.render(<App />, document.getElementById("app"));
 
-
 // ReactDOM.render(
 //   <Provider store={createStoreWithMiddleware(reducers)}>
 //     <App />
