@@ -27,7 +27,7 @@
     "socket.io": "1.7.2",
     "socket.io-client": "1.7.2",
     "superagent": "^3.5.2",
-    "three": "0.86.0",
+    "three": "^0.79.0",
     "uuid": "3.0.1"
   },
   "devDependencies": {

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { PropTypes } from "prop-types";
 import { Provider } from "react-redux";
-import { DevTools, Game } from 'containers';
+import  Game  from "../Game/Game"; 
 
 // (ripfoghorn) saving reference for later
 // import { Router, Route, IndexRoute, hashHistory } from 'react-router';
@@ -17,7 +17,6 @@ export default class Root extends Component {
         return (
             <div>
                 <Game/>
-                <DevTools />
             </div>
         );
     }

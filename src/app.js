@@ -1,17 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
+import  Root  from "./containers/Root/Root";
 
-class App extends Component {
-    render() {
-      return (
-        <div>WIP</div>
-      );
-    }
-  }
-ReactDOM.render(<App />, document.getElementById("app"));
+ReactDOM.render(<Root />, document.getElementById("app"));
 
-// ReactDOM.render(
-//   <Provider store={createStoreWithMiddleware(reducers)}>
-//     <App />
-//   </Provider>
-//   , document.querySelector('.container'));

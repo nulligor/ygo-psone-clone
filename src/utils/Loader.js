@@ -1,12 +1,18 @@
 import { JSONLoader, TextureLoader } from "three";
 
 const jsonLoader = new JSONLoader();
+// const objectLoader = new ObjectLoader();
 const textureLoader = new TextureLoader();
 
-export function loadModel(path) {
-    return new Promise((resolve, reject) => {
-        jsonLoader.load(path, resolve, () => null, error => reject);
-    });    
+export function loadModel( path ) {
+    return new Promise( ( resolve, reject ) => {
+        jsonLoader.load(
+            require("./board.json"),
+            resolve,
+            () => null,
+            error => reject 
+        );
+    });
 }
 
 export function loadTexture(path) {
