@@ -1,3 +1,5 @@
+// (ripfoghorn) this is the 3R Board (for now a dumb component thas supposed to rotate)
+// this equals R3R Robot component
 import React, { Component } from "react";
 import { PropTypes } from "prop-types" 
 import React3 from "react-three-renderer";
