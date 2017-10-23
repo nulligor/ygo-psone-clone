@@ -1,3 +1,4 @@
+// (ripfoghorn) major refactoring necessary
 import React, { Component } from "react";
 import { Vector3 } from "three";
 import  GameScreen  from "../../components/GameScreen/GameScreen";
@@ -34,11 +35,8 @@ export default class Game extends Component {
 
         // (ripfoghorn) load the geometry in didMount, which is only executed server side.
         // note we can pass our JSON file paths to webpack!
-        loadModel("whatever").then( geometry => {
-            console.log(geometry);
-            this.setState({ geometry })
-        }
-        );
+        loadModel(require("../../assets/board.json")).then( geometry => this.setState({ geometry })); 
+        
         // (ripfoghorn) start the game loop when this component loads
         this.requestGameLoop();
     }

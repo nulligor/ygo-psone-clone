@@ -7,7 +7,7 @@ const textureLoader = new TextureLoader();
 export function loadModel( path ) {
     return new Promise( ( resolve, reject ) => {
         jsonLoader.load(
-            require("./board.json"),
+            path, 
             resolve,
             () => null,
             error => reject 

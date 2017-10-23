@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { PropTypes } from "prop-types";
-import { Provider } from "react-redux";
+// import { PropTypes } from "prop-types";
+// import { Provider } from "react-redux";
 import  Game  from "../Game/Game"; 
 
 // (ripfoghorn) saving reference for later
@@ -9,9 +9,9 @@ import  Game  from "../Game/Game";
 // import { StartScreen, GameNewScreen, GameScreen } from 'views';
 
 export default class Root extends Component {
-    constructor(props) {
-        super(props);
-    }
+    // constructor(props) {
+    //     super(props);
+    // }
     //(ripfoghorn) might have to call this binding some sockets or smt
     render() {
         return (
