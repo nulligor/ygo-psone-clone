@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import React3 from "react-three-renderer";
-import { Vector3, Euler, Geometry, DoubleSide} from "three";
+import THREE, { Vector3, Euler, Geometry, DoubleSide} from "three";
 import Board  from "../Board/Board";
  
 export default class GameScreen extends Component {
@@ -18,12 +18,12 @@ export default class GameScreen extends Component {
             width, height, cameraPosition, geometry, lookAt, boardPosition,
             boardRotation 
         } = this.props;
-        const { faces, vertices, faceVertexUvs, } = geometry;
+        const { faces, vertices, faceVertexUvs, } = new THREE.BoxGeometry( 15, 1, 1 );
         
         return (
         <React3 mainCamera="camera" width={ width } height={ height } antialias>
             <resources>
-                <texture resourceId="boardImage" url={ require( '../../assets/sitepoint-robot-texture.jpg' ) } anisotropy={ 16 } /> 
+                <texture resourceId="boardImage" url={ require( '../../assets/board-texture.jpg' ) } anisotropy={ 16 } /> 
              
                 <meshPhongMaterial resourceId="boardTexture" side={ DoubleSide }>
                     <textureResource resourceId="boardImage"/>

@@ -51,7 +51,8 @@ module.exports = {
             },
             {
                 // (ripfoghorn) loaders image/js/css 
-                oneOf: [{
+                oneOf: [
+                    {
                         test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
                         loader: require.resolve("url-loader"),
                         options: {
@@ -59,6 +60,7 @@ module.exports = {
                             name: "static/media/[name].[hash:8].[ext]",
                         },
                     },
+                    { test: /\.json$/, loader: require.resolve("file-loader") },
                     {
                         // (ripfoghorn) Babel for hipster JS
                         test: /\.(js|jsx)$/,
