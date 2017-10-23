@@ -3,18 +3,15 @@ import React, { Component } from "react";
 import { Vector3 } from "three";
 import  GameScreen  from "../../components/GameScreen/GameScreen";
 import "./Game.css";
-
 import { loadModel, } from "../../utils/Loader";
-//  import robotMovementReducer from '../game-reducers/robotMovementReducer';
+
 export default class Game extends Component {
     constructor() {
         super();
-        // (rifoghorn) not sure if needs bind or not
-        // this.requestGameLoop = this.requestGameLoop.bind(this);
-        // this.cancelGameLoop = this.cancelGameLoop.bind(this);
+        this.requestGameLoop = this.requestGameLoop.bind(this);
+        this.cancelGameLoop = this.cancelGameLoop.bind(this);
         this.gameLoop = this.gameLoop.bind(this);
         
-        //(ripfoghorn) initial scene state
         this.state = {
             cameraPosition: new Vector3( 0, 5, 0 ),
             lookAt: new Vector3( 0, 0, 0 )
@@ -35,9 +32,9 @@ export default class Game extends Component {
 
         // (ripfoghorn) load the geometry in didMount, which is only executed server side.
         // note we can pass our JSON file paths to webpack!
-        loadModel(require("../../assets/board.json")).then( geometry => this.setState({ geometry })); 
-        
+        // loadModel(require("../../assets/board.json")).then( geometry => this.setState({ geometry })); 
         // (ripfoghorn) start the game loop when this component loads
+        this.setState({geometry: {}})
         this.requestGameLoop();
     }
     componentWillUnmount() {
@@ -47,7 +44,7 @@ export default class Game extends Component {
     requestGameLoop() {
         this.reqAnimId = window.requestAnimationFrame( this.gameLoop );
     }
-    cancelGameLoopGameLoop() {
+    cancelGameLoop() {
         window.cancelAnimationFrame( this.reqAnimId );
     }
     gameLoop( time ) {
@@ -77,7 +74,7 @@ export default class Game extends Component {
                 geometry={ geometry }
                 boardPosition={ boardPosition }
                 boardRotation={ boardRotation }
-            /> : 'Loading' }
+            /> : 'Loading Geometry...' }
         </div>;
 
     }
