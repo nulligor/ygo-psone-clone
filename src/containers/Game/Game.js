@@ -4,7 +4,7 @@ import { Vector3 } from "three";
 import  GameScreen  from "../../components/GameScreen/GameScreen";
 import "./Game.css";
 import { loadModel, } from "../../utils/Loader";
-const path = require("path");
+import boardMovReducer from '../../redux/game/boardMovReducer';
 
 export default class Game extends Component {
     constructor() {
@@ -21,21 +21,8 @@ export default class Game extends Component {
     }
 
     componentDidMount() {
-        // Track if we're mounted so game loop doesn't tick after unmount
         this.mounted = true;
-        /*
-            (ripfoghorn): clara.io docs sets a mesh/ scene inside callback
-            loader.load( 'monster.json', function ( geometry, materials ) {
-                // (ripfoghorn) not sure mesh fiddling is necessary
-                var mesh = new THREE.Mesh( geometry, new THREE.MeshFaceMaterial( materials ) );
-                scene.add( mesh );
-            });
-        */
-
-        // (ripfoghorn) load the geometry in didMount, which is only executed server side.
-        // note we can pass our JSON file paths to webpack!
         loadModel(require("../../assets/sitepoint-robot.json")).then( geometry => this.setState({ geometry })); 
-        // (ripfoghorn) start the game loop when this component loads
         this.requestGameLoop();
     }
     componentWillUnmount() {
@@ -53,8 +40,7 @@ export default class Game extends Component {
             return;
         }
         this.requestGameLoop();
-        //  (ripfoghorn) currently looping itself
-        this.setState( this.state );
+        this.setState( boardMovReducer( this.state, time ) );
     }
     render() {
         const width = window.innerWidth;
@@ -62,7 +48,6 @@ export default class Game extends Component {
         const {
             cameraPosition, geometry, lookAt, boardPosition, boardRotation,
         } = this.state;
-
         // Pass the data <Game /> needs to render. Note we don't show the game
         // until the geometry model file is loaded. This could be replaced with
         // a loading  screen, or even a 3d scene without geometry in it

@@ -18,7 +18,7 @@ export default class GameScreen extends Component {
             width, height, cameraPosition, geometry, lookAt, boardPosition,
             boardRotation 
         } = this.props;
-        const { faces, vertices, faceVertexUvs, } = new THREE.BoxGeometry( 15, 1, 1 );
+        const { faces, vertices, faceVertexUvs, } = new THREE.BoxGeometry( 6, 1, 2 );
         
         return (
         <React3 mainCamera="camera" width={ width } height={ height } antialias>
