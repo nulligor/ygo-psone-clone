@@ -1,11 +1,13 @@
 import THREE from "three";
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import React3 from "react-three-renderer";
 import Box from "../components/Box";
 import Tetrahedron from "../components/Tetrahedron";
-import {connect} from 'react-redux'
+import { connect } from "react-redux"
 
-const mapStateToProps = function(state){
+// (ripfoghorn) still gotta think both of these thru
+const mapStateToProps = function(state) {
     return{
         position: state.characterPosition,
         quaternion: state.characterRotation,
@@ -14,11 +16,12 @@ const mapStateToProps = function(state){
     }
 }
   
-const mapDispatchToProps = function(dispatch){
+const mapDispatchToProps = function(dispatch) {
     return {
         dispatch
     }
 }
+
 class PreBoard extends Component {
     static displayName = "PreBoard";
 
@@ -27,32 +30,67 @@ class PreBoard extends Component {
     }
     render() {
         let config = this.props.config;
-        //   (ripfoghorn) ??
-        if(typeof config === 'undefined'){
-            return (<group key={'placeholder'}></group>)
+        if(typeof config === "undefined"){
+            return (<group key={ "placeholder" }></group>)
         }
-
         return (
          <group 
-            key={'preboard'}
+            key={ "preboard" }
             position={this.props.position}
             quaternion={this.props.quaternion}
-            scale={this.props.scale}
-         >
-            <Box key ={"mainbox"}/>
-            <Box key ={"uppad"}/>
-            <Box key ={"lowpad"}/>
-            <Tetrahedron key ={"tetra"}/>
-            <Tetrahedron key ={"tetrb"}/>
-            <Tetrahedron key ={"tetrc"}/>
-            <Tetrahedron key ={"tetrd"}/>
+            scale={this.props.scale}>
+            <Box 
+                key={ "mainbox" }
+                size={ config.mainbox.size }
+                color={ config.mainbox.color }
+                position={ config.mainbox.position }
+            />
+            <Box 
+                key={ "uppad" }
+                size={ config.uppad.size }
+                color={ config.uppad.color }
+                position={ config.uppad.position }
+            />
+            <Box 
+                key={ "lowpad" }
+                size={ config.lowpad.size }
+                color={ config.lowpad.color }
+                position={ config.lowpad.position }
+            />
+            <Tetrahedron 
+                key={"tetra"}
+                color={ config.tetra.color }
+                position={ config.tetra.position }
+                radius={ config.tetra.radius }
+                detail={ config.tetra.detail }
+            />
+            <Tetrahedron 
+                key={"tetrb"}
+                color={ config.tetrb.color }
+                position={ config.tetrb.position }
+                radius={ config.tetrb.radius }
+                detail={ config.tetrb.detail }
+            />
+            <Tetrahedron 
+                key={"tetrc"}
+                color={ config.tetrc.color }
+                position={ config.tetrc.position }
+                radius={ config.tetrc.radius }
+                detail={ config.tetrc.detail }
+            />
+            <Tetrahedron 
+                key={"tetrd"}
+                color={ config.tetrd.color }
+                position={ config.tetrd.position }
+                radius={ config.tetrd.radius }
+                detail={ config.tetrd.detail }
+            />
          </group>   
         )
     }
 }
-
 PreBoard.propTypes = {
-    config: PropTypes.instanceOf(Object),
+    config: PropTypes.instanceOf(Object).isRequired,
     position: PropTypes.instanceOf(THREE.Vector3),
     quaternion: PropTypes.instanceOf(THREE.Quaternion),
     scale: PropTypes.instanceOf(THREE.Vector3)
