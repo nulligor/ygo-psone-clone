@@ -22,6 +22,9 @@ const mapDispatchToProps = function(dispatch) {
     }
 }
 
+//(ripfoghorn) might have to fiddle with 
+    //  all tetrahedrons radius 
+    //  so keep that in mind-desu   
 class PreBoard extends Component {
     static displayName = "PreBoard";
 
@@ -61,29 +64,21 @@ class PreBoard extends Component {
                 key={"tetra"}
                 color={ config.tetra.color }
                 position={ config.tetra.position }
-                radius={ config.tetra.radius }
-                detail={ config.tetra.detail }
             />
             <Tetrahedron 
                 key={"tetrb"}
                 color={ config.tetrb.color }
                 position={ config.tetrb.position }
-                radius={ config.tetrb.radius }
-                detail={ config.tetrb.detail }
             />
             <Tetrahedron 
                 key={"tetrc"}
                 color={ config.tetrc.color }
                 position={ config.tetrc.position }
-                radius={ config.tetrc.radius }
-                detail={ config.tetrc.detail }
             />
             <Tetrahedron 
                 key={"tetrd"}
                 color={ config.tetrd.color }
                 position={ config.tetrd.position }
-                radius={ config.tetrd.radius }
-                detail={ config.tetrd.detail }
             />
          </group>   
         )
