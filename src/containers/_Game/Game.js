@@ -1,10 +1,10 @@
 // (ripfoghorn) major refactoring necessary
 import React, { Component } from "react";
 import { Vector3 } from "three";
-import  GameScreen  from "../../components/GameScreen/GameScreen";
+import  GameScreen  from "../../components/_GameScreen/GameScreen";
 import "./Game.css";
 import { loadModel, } from "../../utils/Loader";
-import boardMovReducer from '../../redux/game/boardMovReducer';
+import boardMovReducer from '../../redux/_game/boardMovReducer';
 
 export default class Game extends Component {
     constructor() {
