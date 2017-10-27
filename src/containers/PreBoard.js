@@ -43,9 +43,9 @@ class PreBoard extends Component {
             scale={this.props.scale}>
             <Box 
                 key={ "mainbox" }
-                size={ config.mainbox.size }
-                color={ config.mainbox.color }
-                position={ config.mainbox.position }
+                size={ config.mainBox.size }
+                color={ config.mainBox.color }
+                position={ config.mainBox.position }
             />
             {/* <Box 
                 key={ "uppad" }
@@ -84,7 +84,7 @@ class PreBoard extends Component {
     }
 }
 PreBoard.propTypes = {
-    config: PropTypes.instanceOf(Object).isRequired,
+    config: PropTypes.instanceOf(Object),
     position: PropTypes.instanceOf(THREE.Vector3),
     quaternion: PropTypes.instanceOf(THREE.Quaternion),
     scale: PropTypes.instanceOf(THREE.Vector3)

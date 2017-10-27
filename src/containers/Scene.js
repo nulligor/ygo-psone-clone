@@ -7,8 +7,8 @@ import React3 from "react-three-renderer";
 import {updateCamera, resize} from "../redux/actions";
 import World from "./World";
 import PreBoard from "./PreBoard";
+import OrbitControls from "../utils/OrbitControls";
 import getStore from "../redux/utils/configureStore"; // singleton
-
 
 const mapDispatchToProps = function(dispatch) {
     return { dispatch };
@@ -61,7 +61,7 @@ class SceneComponent extends Component {
             antialias
             shadowMapEnabled={true}
             clearColor={0xffffff}
-            forceManualRender={true}
+            forceManualRender={false}
             onManualRenderTriggerCreated={this._onManualRenderTriggerCreated}
           >
             <scene
@@ -98,3 +98,5 @@ class SceneComponent extends Component {
         return scene
       }    
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(SceneComponent);

@@ -23,6 +23,7 @@
     "react-three-renderer": "2.3.3",
     "redux": "3.6.0",
     "redux-logger": "^3.0.6",
+    "redux-promise": "^0.5.3",
     "redux-thunk": "2.2.0",
     "reselect": "2.5.4",
     "socket.io": "1.7.2",
