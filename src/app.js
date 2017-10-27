@@ -9,7 +9,7 @@ window.onload = function() {
       let store = configureStore();
       ReactDOM.render(
         <Provider store={store}>
-          <App/>
+          <Root/>
         </Provider>,
         document.getElementById("app")
       )

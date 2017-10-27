@@ -14,7 +14,7 @@ export default class Root extends Component {
     render() {
         return (
             <div>
-                <Scene/>
+                <Scene3D/>
             </div>
         );
     }
