@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import React3 from "react-three-renderer";
 import Box from "../components/Box";
-import Tetrahedron from "../components/Tetrahedron";
+// import Tetrahedron from "../components/Tetrahedron";
 import { connect } from "react-redux"
 
 // (ripfoghorn) still gotta think both of these thru
@@ -13,18 +13,17 @@ const mapStateToProps = function(state) {
         quaternion: state.characterRotation,
         scale: new THREE.Vector3(1, 1, 1),
         config: state.config
-    }
+    };
 }
   
 const mapDispatchToProps = function(dispatch) {
-    return {
-        dispatch
-    }
+    return { dispatch };
 }
-
-//(ripfoghorn) might have to fiddle with 
+// (ripfoghorn) https://stackoverflow.com/questions/22360936/will-three-js-object3d-clone-create-a-deep-copy-of-the-geometry
+    // beware possibiliy of cloning an object and rendering it twice or whatever
+// (ripfoghorn) might have to fiddle with 
     //  all tetrahedrons radius 
-    //  so keep that in mind-desu   
+    //  so keep that in mind-desu 
 class PreBoard extends Component {
     static displayName = "PreBoard";
 
@@ -48,7 +47,7 @@ class PreBoard extends Component {
                 color={ config.mainbox.color }
                 position={ config.mainbox.position }
             />
-            <Box 
+            {/* <Box 
                 key={ "uppad" }
                 size={ config.uppad.size }
                 color={ config.uppad.color }
@@ -59,8 +58,8 @@ class PreBoard extends Component {
                 size={ config.lowpad.size }
                 color={ config.lowpad.color }
                 position={ config.lowpad.position }
-            />
-            <Tetrahedron 
+            /> */}
+            {/* <Tetrahedron 
                 key={"tetra"}
                 color={ config.tetra.color }
                 position={ config.tetra.position }
@@ -79,7 +78,7 @@ class PreBoard extends Component {
                 key={"tetrd"}
                 color={ config.tetrd.color }
                 position={ config.tetrd.position }
-            />
+            /> */}
          </group>   
         )
     }

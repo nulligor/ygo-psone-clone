@@ -4,18 +4,12 @@ import PropTypes from "prop-types";
 import ReactDOM from "react-dom";
 import { connect } from "react-redux";
 
-// (ripfoghorn) still gotta think both of these thru
 const mapStateToProps = function(state) {
-    return{
-        position: state.worldPosition,
-        quaternion: state.worldRotation,
-    }
+    return{ position: state.worldPosition, quaternion: state.worldRotation };
 }
   
 const mapDispatchToProps = function(dispatch) {
-    return {
-        dispatch
-    }
+    return { dispatch };
 }
 
 class World extends Component {

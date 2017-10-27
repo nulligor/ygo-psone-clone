@@ -8,7 +8,6 @@ const initialState = {
     worldRotation: globals.WORLD_ROTATION,
     cameraPosition: new THREE.Vector3(0, 300, 500),
     cameraQuaternion: new THREE.Quaternion(),
-    autoRender: false,
     sceneWidth: window.innerWidth,
     sceneHeight: window.innerHeight    
 }
@@ -16,13 +15,64 @@ const initialState = {
 const getInitialState = () => Object.assign({}, initialState, {config: getConfig(initialState)});
 
 const getConfig = (state) => {
-    // still dont have the props stuff
-    // let legLength = state.legLength
-    // let legSize = state.legSize
-    // let bodyWidth = state.bodyWidth
-    // let bodyHeight = state.bodyHeight
-    // let bodyDepth = state.bodyDepth
-    // let headSize = state.headSize
-    // let armSize = state.armSize
-    // let armLength = state.armLength
+    let mainBoxWidth = state.mainBoxWidth;
+    let mainBoxHeight = state.mainBoxHeight;
+    let mainBoxDepth = state.mainBoxDepth;
+    // let upPadSize = state.upPadSize;
+    // let upPadLength = state.upPadLength;
+    // let lowPadSize = state.lowPadSize;
+    // let lowPadLength = state.lowPadLength;
+    //  (ripfoghorn) still gotta deal with the tetrahedrons
+    return {
+        // (ripfoghorn) ?
+        // head: {
+        //   size: {x: headSize, y: headSize, z: headSize},
+        //   position: {x: 0, y: 0, z: (legLength + bodyHeight) + (headSize / 2)},
+        //   color: 0xcc00cc
+        // },
+        mainBox: {
+          size: {x: mainBoxWidth, y: mainBoxDepth, z: mainBoxHeight},
+          position: {x: 0, y: 0, z: (mainBoxHeight / 2)},
+          color: 0xccc000
+        }
+        // leftLeg: {
+        //   size: {x: legSize, y: legSize, z: legLength},
+        //   position: {x: -((bodyWidth / 2) - (legSize / 2)), y: 0, z: (legLength / 2)},
+        //   color: 0x0cc000
+        // },
+        // rightLeg: {
+        //   size: {x: legSize, y: legSize, z: legLength},
+        //   position: {x: ((bodyWidth / 2) - (legSize / 2)), y: 0, z: (legLength / 2)},
+        //   color: 0x0cc000
+        // },
+
+        // leftArm: {
+        //   size: {x: armSize, y: armSize, z: armLength},
+        //   position: {x: -((bodyWidth / 2) + (armSize / 2)), y: 0, z: (legLength + bodyHeight) - (armLength / 2)},
+        //   color: 0x00ccc0
+        // },
+        // rightArm: {
+        //   size: {x: armSize, y: armSize, z: armLength},
+        //   position: {x: ((bodyWidth / 2) + (armSize / 2)), y: 0, z: (legLength + bodyHeight) - (armLength / 2)},
+        //   color: 0x00ccc0
+        // }
+      }
 }
+
+const rootReducer = (state = getInitialState(), action) => {
+    switch(action.type) {
+        case types.RESIZE:
+        state = Object.assign({}, state, {
+          sceneWidth: action.payload.width,
+          sceneHeight: action.payload.height,
+          config: getConfig(initialState)
+        })
+        break
+  
+      default:
+        // just return state
+    }
+    return state
+} 
+
+export default rootReducer;
