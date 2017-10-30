@@ -4,6 +4,9 @@ import * as globals from "../constants/globals";
 
 //  (ripfoghorn) autoRender should be false by implementation
 const initialState = {
+    mainBoxWidth: 120,
+    mainBoxHeight: 50,
+    mainBoxDepth: 170,
     sceneRotation: new THREE.Quaternion(),
     worldRotation: globals.WORLD_ROTATION,
     cameraPosition: new THREE.Vector3(0, 300, 500),
@@ -15,6 +18,7 @@ const initialState = {
 const getInitialState = () => Object.assign({}, initialState, {config: getConfig(initialState)});
 
 const getConfig = (state) => {
+    //  (ripfoghorn) these will probably not change
     let mainBoxWidth = state.mainBoxWidth;
     let mainBoxHeight = state.mainBoxHeight;
     let mainBoxDepth = state.mainBoxDepth;

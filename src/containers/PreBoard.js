@@ -54,6 +54,12 @@ class PreBoard extends Component {
                 position={ config.uppad.position }
             />
             <Box 
+                key={ "centerpad" }
+                size={ config.centerpad.size }
+                color={ config.centerpad.color }
+                position={ config.centerpad.position }
+            />            
+            <Box 
                 key={ "lowpad" }
                 size={ config.lowpad.size }
                 color={ config.lowpad.color }
