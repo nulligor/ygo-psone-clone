@@ -19,22 +19,23 @@ const mapStateToProps = function(state) {
 const mapDispatchToProps = function(dispatch) {
     return { dispatch };
 }
+
 // (ripfoghorn) https://stackoverflow.com/questions/22360936/will-three-js-object3d-clone-create-a-deep-copy-of-the-geometry
     // beware possibiliy of cloning an object and rendering it twice or whatever
-// (ripfoghorn) might have to fiddle with 
-    //  all tetrahedrons radius 
-    //  so keep that in mind-desu 
-class PreBoard extends Component {
+
+    class PreBoard extends Component {
     static displayName = "PreBoard";
 
     constructor(props) {
         super(props)
     }
     render() {
+        //   (ripfoghorn) :thinking_emoji:
         let config = this.props.config;
         if(typeof config === "undefined"){
             return (<group key={ "placeholder" }></group>)
         }
+        console.log(config);
         return (
          <group 
             key={ "preboard" }
@@ -47,24 +48,19 @@ class PreBoard extends Component {
                 color={ config.mainBox.color }
                 position={ config.mainBox.position }
             />
-            {/* <Box 
+             <Box 
                 key={ "uppad" }
-                size={ config.uppad.size }
-                color={ config.uppad.color }
-                position={ config.uppad.position }
+                size={ config.upPad.size }
+                color={ config.upPad.color }
+                position={ config.upPad.position }
             />
             <Box 
-                key={ "centerpad" }
-                size={ config.centerpad.size }
-                color={ config.centerpad.color }
-                position={ config.centerpad.position }
-            />            
-            <Box 
                 key={ "lowpad" }
-                size={ config.lowpad.size }
-                color={ config.lowpad.color }
-                position={ config.lowpad.position }
-            /> */}
+                size={ config.lowPad.size }
+                color={ config.lowPad.color }
+                position={ config.lowPad.position }
+            />  
+
             {/* <Tetrahedron 
                 key={"tetra"}
                 color={ config.tetra.color }

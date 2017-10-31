@@ -26,10 +26,15 @@ const mapStateToProps = function(state) {
 class SceneComponent extends Component {
     static displayName = "Scene3D";
     constructor(props) {
-        super(props);
+        super(props)
+        // (ripfoghorn) ? this.storeInstance = props.store
         this.storeInstance = getStore();
+        // (ripfoghorn) :pray:
         this.onResizeListener = this._onResize.bind(this);
     }
+    // shouldComponentUpdate(nextProps, nextState) {
+    //     return !nextProps.sliderBusy
+    //  }   
     componentDidMount() { 
         this._canvas = ReactDOM.findDOMNode(this.refs.react3);
         this._camera = this.refs.camera;
@@ -44,10 +49,10 @@ class SceneComponent extends Component {
         this.props.dispatch(resize({
           width: window.innerWidth,
           height: window.innerHeight
-        }));
+        }))
     }
     render() {
-        return (
+        let scene = (
           <React3
             ref="react3"
             mainCamera="camera"
@@ -55,7 +60,7 @@ class SceneComponent extends Component {
             height={this.props.sceneHeight}
             antialias
             shadowMapEnabled={true}
-            clearColor={0x333333}
+            clearColor={0x000000}
             forceManualRender={false}
             onManualRenderTriggerCreated={this._onManualRenderTriggerCreated}
           >
@@ -82,12 +87,15 @@ class SceneComponent extends Component {
                 intensity={1.5}
                 position={new THREE.Vector3(0, 0, 60)}
               />
+    
               <World store={this.storeInstance}>
                 <PreBoard store={this.storeInstance}/>
               </World>
+    
             </scene>
           </React3>
         )
+        return scene
       }    
 }
 
