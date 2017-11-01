@@ -2,21 +2,22 @@ const express = require("express");
 const app = express();
 const server = require("http").Server(app);
 const io = require("socket.io")(server);
-const webpackMiddleware = require("webpack-dev-middleware");
-const webpack = require("webpack");
-const webpackHotMiddleware = require("webpack-hot-middleware");
 
-const PORT = 8080;
+const webpack = require("webpack");
+const webpackMiddleware = require("webpack-dev-middleware");
+const webpackHotMiddleware = require("webpack-hot-middleware");
 const config = require("./webpack.config.js");
 const compiler = webpack(config);
-const { bindSocket } = require('./utils');
-const game = require('./routes/api/game');
-process.env.NODE_ENV = 'development';
+
+const PORT = 8080;
+const { bindSocket } = require("./utils");
+const game = require("./routes/api/game");
+process.env.NODE_ENV = "development";
 
 // (ripfoghorn) routes
 app.post('/api/game/new', game.generateNewGameId);
 
-// (ripfoghorn) middlewares
+// (ripfoghorn) middlewares (dev)
 app.use(webpackMiddleware(compiler, {
     hot: true,
     filename: config.output.filename,

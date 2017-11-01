@@ -21,8 +21,10 @@ module.exports = {
         //  (ripfoghorn) 
         //  https://github.com/facebookincubator/create-react-app/tree/master/packages/react-error-overlay
         require.resolve("react-error-overlay"),
+        "webpack-hot-middleware/client?path=http://localhost:8080/__webpack_hmr&reload=true&quiet=true",
         path.join(paths.src, "app.js")
     ],
+    
     output: {
         path: paths.build,
         filename: "static/js/bundle.js",
