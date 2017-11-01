@@ -9,8 +9,7 @@ const webpackHotMiddleware = require("webpack-hot-middleware");
 const config = require("./webpack.config.js");
 const compiler = webpack(config);
 
-const PORT = 8080;
-const { bindSocket } = require("./utils");
+const { bindSocket, globalConfigs } = require("./utils");
 const game = require("./routes/api/game");
 process.env.NODE_ENV = "development";
 
@@ -27,7 +26,7 @@ app.use(webpackMiddleware(compiler, {
 app.use(webpackHotMiddleware(compiler));
 
 // (ripfoghorn) serve
-server.listen(PORT, 'localhost', (error) => {
+server.listen(globalConfigs.port, globalConfigs.host, (error) => {
   io.on('connection', (socket) => {
     // const bindSocketCurried = bindSocket(io, socket);
     // socket.on('gameJoin', bindSocketCurried(onGameJoinHandler));
@@ -37,6 +36,6 @@ server.listen(PORT, 'localhost', (error) => {
   if (error) {
     console.error(error);
   } else {
-    console.info(`> Listening on http://localhost:${PORT}/`);
+    console.info(`> Listening on ${globalConfigs.path}`);
   }
 });

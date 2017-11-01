@@ -4,6 +4,7 @@ const webpack = require("webpack");
 const WatchMissingNodeModulesPlugin = require("react-dev-utils/WatchMissingNodeModulesPlugin");
 const eslintFormatter = require("react-dev-utils/eslintFormatter");
 const autoprefixer = require("autoprefixer");
+const { globalConfigs } = require("./utils");
 
 const paths = {
     root: path.join(__dirname, ".."),
@@ -21,7 +22,7 @@ module.exports = {
         //  (ripfoghorn) 
         //  https://github.com/facebookincubator/create-react-app/tree/master/packages/react-error-overlay
         require.resolve("react-error-overlay"),
-        "webpack-hot-middleware/client?path=http://localhost:8080/__webpack_hmr&reload=true&quiet=true",
+        `webpack-hot-middleware/client?path=${globalConfigs.path}__webpack_hmr&reload=true&quiet=true`,
         path.join(paths.src, "app.js")
     ],
     
