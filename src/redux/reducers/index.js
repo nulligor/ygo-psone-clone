@@ -2,15 +2,14 @@ import THREE from "three";
 import * as types from "../constants/action_types";
 import * as globals from "../constants/globals";
 
-//  (ripfoghorn) rootReducer is mostly serving for status delegating
+// (ripfoghorn) rootReducer is mostly serving for status delegating
 const initialState = {
+    // (ripfoghorn) PreBoard definition
     mainBoxWidth: 120,
     mainBoxHeight: 25,
     mainBoxDepth: 170,
     upPadSize: 120,
     upPadLength: 10,
-
-
     sceneRotation: new THREE.Quaternion(),
     worldRotation: globals.WORLD_ROTATION,
     cameraPosition: new THREE.Vector3(0, 300, 500),
@@ -32,7 +31,7 @@ const getConfig = (state) => {
         //  so we can abstract it away
     let upPadSize = state.upPadSize;
     let upPadLength = state.upPadLength;
-    
+
     // let lowPadSize = state.lowPadSize;
     // let lowPadLength = state.lowPadLength;
 
@@ -52,7 +51,14 @@ const getConfig = (state) => {
             size: {x: upPadSize, y: ( upPadSize / 2), z: ( upPadLength / 3)},
             position: {x: 0, y: (mainBoxDepth / 3), z: (mainBoxHeight * 1.57) },
             color: 0xaea515
-          }
+        },
+        tetrA: {
+            detail: 0,
+            position: { x: (mainBoxWidth / 2), y: (mainBoxDepth / 2.2), z: (mainBoxHeight * 1.9) },
+            radius: 6,
+            color: 0x151555
+        },
+        tetraGroupUp: { quaternion: new THREE.Quaternion(0.02, 0.03, 0.03) }
       }
 }
 

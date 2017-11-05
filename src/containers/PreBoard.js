@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import React3 from "react-three-renderer";
 import Box from "../components/Box";
-// import Tetrahedron from "../components/Tetrahedron";
+import Tetrahedron from "../components/Tetrahedron";
 import { connect } from "react-redux"
 
 // (ripfoghorn) still gotta think both of these thru
@@ -60,17 +60,23 @@ const mapDispatchToProps = function(dispatch) {
                 color={ config.lowPad.color }
                 position={ config.lowPad.position }
             />  
-
-            {/* <Tetrahedron 
+            <group quaternion = { config.tetraGroupUp.quaternion }>
+            <Tetrahedron 
                 key={"tetra"}
-                color={ config.tetra.color }
-                position={ config.tetra.position }
+                color={ config.tetrA.color }
+                detail={config.tetrA.detail}
+                radius={config.tetrA.radius}
+                position={ config.tetrA.position }
             />
+            </ group>
+            {/*
             <Tetrahedron 
                 key={"tetrb"}
-                color={ config.tetrb.color }
-                position={ config.tetrb.position }
+                color={ config.tetrB.color }
+                detail={config.tetrB.detail}
+                position={ config.tetrB.position }
             />
+       
             <Tetrahedron 
                 key={"tetrc"}
                 color={ config.tetrc.color }
