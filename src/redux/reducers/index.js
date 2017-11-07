@@ -1,5 +1,5 @@
 import THREE from "three";
-import * as types from "../constants/action_types";
+// import * as types from "../constants/action_types";
 import * as globals from "../constants/globals";
 
 // (ripfoghorn) rootReducer is mostly serving for status delegating
@@ -14,7 +14,6 @@ const initialState = {
     worldRotation: globals.WORLD_ROTATION,
     cameraPosition: new THREE.Vector3(0, 300, 500),
     cameraQuaternion: new THREE.Quaternion(),
-
     sceneWidth: window.innerWidth,
     sceneHeight: window.innerHeight    
 }
@@ -54,11 +53,11 @@ const getConfig = (state) => {
         },
         tetrA: {
             detail: 0,
-            position: { x: (mainBoxWidth / 2), y: (mainBoxDepth / 2.2), z: (mainBoxHeight * 1.9) },
-            radius: 6,
-            color: 0x151555
+            position: { x: 63, y: 68, z: 29 },
+            radius: 21,
+            color: 0x151555,
+            rotation: new THREE.Euler(1.28, 0.8, 2)
         },
-        tetraGroupUp: { quaternion: new THREE.Quaternion(0.02, 0.03, 0.03) }
       }
 }
 

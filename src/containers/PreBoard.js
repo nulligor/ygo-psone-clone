@@ -60,15 +60,14 @@ const mapDispatchToProps = function(dispatch) {
                 color={ config.lowPad.color }
                 position={ config.lowPad.position }
             />  
-            <group quaternion = { config.tetraGroupUp.quaternion }>
             <Tetrahedron 
                 key={"tetra"}
                 color={ config.tetrA.color }
                 detail={config.tetrA.detail}
                 radius={config.tetrA.radius}
                 position={ config.tetrA.position }
+                rotation={ config.tetrA.rotation }
             />
-            </ group>
             {/*
             <Tetrahedron 
                 key={"tetrb"}

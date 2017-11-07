@@ -26,8 +26,8 @@ class World extends Component {
                 quaternion={ this.props.quaternion }
             >  
                 <mesh
-                    key={'floor'}
-                    position={this.props.position}
+                    key={"floor"}
+                    position={ this.props.position }
                     >
                     <planeBufferGeometry
                         width={300}
@@ -38,7 +38,7 @@ class World extends Component {
                     <meshBasicMaterial
                         opacity={0.5}
                         color={0x333000}
-                        side={THREE.DoubleSide}
+                        side={ THREE.DoubleSide }
                         wireframe
                     />
                 </mesh>
