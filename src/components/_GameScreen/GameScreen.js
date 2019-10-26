@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import React3 from "react-three-renderer";
 import THREE, { Vector3, Euler, Geometry, DoubleSide} from "three";
-import Board  from "../Board/Board";
+import Board  from "../_Board/Board";
  
 export default class GameScreen extends Component {
     static propTypes = {

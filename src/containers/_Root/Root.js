@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 // import { PropTypes } from "prop-types";
 // import { Provider } from "react-redux";
-import  Game  from "../Game/Game"; 
+import  Game  from "../_Game/Game"; 
 
 // (ripfoghorn) saving reference for later
 // import { Router, Route, IndexRoute, hashHistory } from 'react-router';

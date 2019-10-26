@@ -4,6 +4,7 @@ const webpack = require("webpack");
 const WatchMissingNodeModulesPlugin = require("react-dev-utils/WatchMissingNodeModulesPlugin");
 const eslintFormatter = require("react-dev-utils/eslintFormatter");
 const autoprefixer = require("autoprefixer");
+const { globalConfigs } = require("./utils");
 
 const paths = {
     root: path.join(__dirname, ".."),
@@ -21,8 +22,10 @@ module.exports = {
         //  (ripfoghorn) 
         //  https://github.com/facebookincubator/create-react-app/tree/master/packages/react-error-overlay
         require.resolve("react-error-overlay"),
+        `webpack-hot-middleware/client?path=${globalConfigs.path}__webpack_hmr&reload=true&quiet=true`,
         path.join(paths.src, "app.js")
     ],
+    
     output: {
         path: paths.build,
         filename: "static/js/bundle.js",
@@ -50,7 +53,7 @@ module.exports = {
                 include: paths.src
             },
             {
-                // (ripfoghorn) loaders image/js/css 
+                //  (ripfoghorn) loaders image/js/css 
                 oneOf: [
                     {
                         test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
@@ -62,7 +65,7 @@ module.exports = {
                     },
                     { test: /\.json$/, loader: require.resolve("file-loader") },
                     {
-                        // (ripfoghorn) Babel for hipster JS
+                        //  (ripfoghorn) Babel for hipster JS
                         test: /\.(js|jsx)$/,
                         include: paths.src,
                         loader: require.resolve("babel-loader"),
@@ -70,10 +73,10 @@ module.exports = {
                             cacheDirectory: true,
                         },
                     },
-                    // (ripfoghorn) create-react-app: 
-                    // "postcss" loader applies autoprefixer to our CSS.
-                    // "css" loader resolves paths in CSS and adds assets as dependencies.
-                    // "style" loader turns CSS into JS modules that inject <style> tags.
+                    //  (ripfoghorn) create-react-app: 
+                    //      "postcss" loader applies autoprefixer to our CSS.
+                    //      "css" loader resolves paths in CSS and adds assets as dependencies.
+                    //      "style" loader turns CSS into JS modules that inject <style> tags.
                     {
                         test: /\.css$/,
                         use: [require.resolve("style-loader"), {
@@ -85,9 +88,9 @@ module.exports = {
                             {
                                 loader: require.resolve("postcss-loader"),
                                 options: {
-                                    // (ripfoghorn) create-react-app: 
-                                    // Necessary for external CSS imports to work
-                                    // https://github.com/facebookincubator/create-react-app/issues/2677
+                                    //  (ripfoghorn) create-react-app: 
+                                    //      Necessary for external CSS imports to work
+                                    //      https://github.com/facebookincubator/create-react-app/issues/2677
                                     ident: "postcss",
                                     plugins: () => [require("postcss-flexbugs-fixes"), autoprefixer({
                                         browsers: [">1%", "last 4 versions", "Firefox ESR", "not ie < 9"],
